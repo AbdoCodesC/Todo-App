@@ -1,0 +1,48 @@
+### GET /
+GET http://localhost:3000/
+
+### Register a new user POST AUTH/REGISTER
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+    "username": "gilgamesh@gmail.com",
+    "password": "MeowBro"
+}
+
+### Login a user POST AUTH/LOGIN
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "username": "gilgamesh@gmail.com",
+    "password": "MeowBro"
+}
+
+### FETCH ALL GET /TODOS  (protected)
+
+### Get todos GET /TODOS
+GET http://localhost:3000/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM3MTc4NTA3LCJleHAiOjE3MzcyNjQ5MDd9._4e-z9SYnlvoLlWHfMYEy_DU41r5kBU8ab2oJ5jKqFU
+
+### Create a new todo POST /TODOS
+POST http://localhost:3000/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM3MTc4NTA3LCJleHAiOjE3MzcyNjQ5MDd9._4e-z9SYnlvoLlWHfMYEy_DU41r5kBU8ab2oJ5jKqFU
+Content-Type: application/json
+
+{
+    "task": "Study Hard!"
+}
+
+### Update todos PUT /TODOS/:ID (protected)
+PUT http://localhost:3000/todos/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM3MTc4NTA3LCJleHAiOjE3MzcyNjQ5MDd9._4e-z9SYnlvoLlWHfMYEy_DU41r5kBU8ab2oJ5jKqFU
+Content-Type: application/json
+
+{
+    "completed": 1
+}
+
+### Delete a todo DELETE /TODOS/:ID (protected)
+DELETE http://localhost:3000/todos/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM3MTc4NTA3LCJleHAiOjE3MzcyNjQ5MDd9._4e-z9SYnlvoLlWHfMYEy_DU41r5kBU8ab2oJ5jKqFU
