@@ -1,7 +1,5 @@
 # TODO App
 
-This guide provides an overview of the codebase, the functionality of the app, and detailed instructions on how to set up and run the app. Make sure to follow all steps carefully, especially regarding Node.js version requirements.
-
 ## Overview
 
 This is an **Dockerized** and authentication-protected Todo App using **Node.js**, **Express.js**, **bcrypt**, **JWT authentication**, **Prisma**, and **PostgreSQL**. The app allows users to:
@@ -15,7 +13,7 @@ This is an **Dockerized** and authentication-protected Todo App using **Node.js*
 Here’s the corrected and complete project structure diagram for the auth-protected Todo App:
 
 ```
-backend-todo-app/
+Todo-App/
 │
 ├── public/
 │   └── index.html              # The frontend HTML file for authentication and todo management
@@ -38,7 +36,7 @@ backend-todo-app/
 ├── docker-compose.yaml          # Docker setup config file
 ├── package.json                 # Project dependencies and scripts
 ├── package-lock.json            # Lockfile for exact dependency versions
-└── todo-app.rest                # REST client file for emulating API requests
+└── Todo-App.rest                # REST client file for emulating API requests
 ```
 
 ### Explanation of Key Directories and Files
@@ -73,8 +71,8 @@ This project structure and workflow will help organize your code and make it eas
 1. **Clone the Repository**:
 
 ```bash
-git clone https://github.com/your-username/backend-todo-app.git
-cd backend-todo-app
+git clone https://github.com/your-username/Todo-App.git
+cd Todo-App
 ```
 
 2. **Generate the Prisma Client**:
