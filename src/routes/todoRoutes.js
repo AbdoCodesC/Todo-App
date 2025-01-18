@@ -1,42 +1,56 @@
-import express from "express";
-import db from "../db.js";
+import express from "express"
+import prisma from "../prismaClient.js"
 
-const router = express.Router();
+const router = express.Router()
 
 // Get all todos for logged-in user
-router.get("/", (req, res) => {
-  const getTodos = db.prepare("SELECT * FROM todos WHERE user_id = ?");
-  const todos = getTodos.all(req.userId);
-  res.json(todos);
-});
+router.get("/", async (req, res) => {
+  const todos = await prisma.todo.findMany({
+    where: {
+      userId: req.userId,
+    },
+  })
+  res.json(todos)
+})
 
 // Create a new todo
-router.post("/", (req, res) => {
-  const { task } = req.body;
-  const insertTodo = db.prepare(
-    "INSERT INTO todos (user_id, task) VALUES (?, ?)"
-  );
-  const result = insertTodo.run(req.userId, task);
-  res.json({ id: result.lastInsertRowid, task, completed: 0 });
-});
+router.post("/", async (req, res) => {
+  const { task } = req.body
+  const todo = await prisma.todo.create({
+    data: {
+      task,
+      userId: req.userId,
+    },
+  })
+  res.json(todo)
+})
 
 // Update a todo
-router.put("/:id", (req, res) => {
-  const { completed } = req.body;
-  const id = +req.params.id;
-  const updateTodo = db.prepare("UPDATE todos SET completed = ? WHERE id = ?");
-  updateTodo.run(completed, id);
-  res.json({ message: "Todo Completed" });
-});
+router.put("/:id", async (req, res) => {
+  const { completed } = req.body
+  const id = +req.params.id
+  const updatedTodo = await prisma.todo.update({
+    where: {
+      id: id,
+      userId: req.userId,
+    },
+    data: {
+      completed: !!completed,
+    },
+  })
+  res.json(updatedTodo)
+})
 
 // Delete a todo
-router.delete("/:id", (req, res) => {
-  const id = +req.params.id;
-  const deleteTodo = db.prepare(
-    "DELETE FROM todos WHERE id = ? AND user_id = ?"
-  );
-  deleteTodo.run(id, req.userId);
-  res.json({ message: "Todo Deleted" });
-});
+router.delete("/:id", async (req, res) => {
+  const id = +req.params.id
+  const deletedTodo = await prisma.todo.delete({
+    where: {
+      id: id,
+      userId: req.userId,
+    },
+  })
+  res.json(deletedTodo)
+})
 
-export default router;
+export default router

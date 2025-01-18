@@ -1,5 +1,5 @@
 {
-  "name": "chapter3",
+  "name": "chapter4",
   "version": "1.0.0",
   "main": "app.js",
   "type": "module",
@@ -9,12 +9,15 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "A fullstack todo app using a NodeJS backend, a sqlite database, and JWT Auth",
+  "description": "A dockerized fullstack todo app using a NodeJS backend, a PostgreSQL database, a Prisma ORM, and JWT Auth",
   "dependencies": {
+    "@prisma/client": "^6.2.1",
     "bcryptjs": "^2.4.3",
     "better-sqlite3": "^11.8.0",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.13.1",
+    "prisma": "^6.2.1"
   }
 }
